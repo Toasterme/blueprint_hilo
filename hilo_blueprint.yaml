@@ -6,44 +6,49 @@ blueprint:
     thermostats_defi:
       name: Thermostats Défi
       selector:
-        entity:
-          filter:
-            domain: climate            
+        target:
+          entity:
+            domain: climate
     temperature_scheduled:
       name: Température Schédulé
       description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut scheduled.
       selector:
-        entity:
-          filter:
-            domain: input_select
+        number:
+          min: 15
+          max: 25
+          unit_of_measurement: celcius
     temperature_appreciation:
       name: Température lors des périodes d'ancrage
       description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut appreciation. C'est la température à à configurer lorsque le système est dans sa période d'ancrage.
       selector:
-        entity:
-          filter:
-            domain: input_select      
+        number:
+          min: 15
+          max: 25
+          unit_of_measurement: celcius      
     temperature_pre_heat:
       name: Température de Pré Chauffage
       description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut pre_heat. C'est la température à monter la maison avant le début du défi.
       selector:
-        entity:
-          filter:
-            domain: input_select
+        number:
+          min: 15
+          max: 25
+          unit_of_measurement: celcius
     temperature_reduction:
       name: Température lors du défi
       description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut reduction. C'est la température à descendre la maison lors du début du défi.
       selector:
-        entity:
-          filter:
-            domain: input_select
+        number:
+          min: 15
+          max: 25
+          unit_of_measurement: celcius
     temperature_recovery:
       name: Température de retour à la normale
       description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut recovery. C'est la température de retour à la normale après le défi.
       selector:
-        entity:
-          filter:
-            domain: input_select    
+        number:
+          min: 15
+          max: 25
+          unit_of_measurement: celcius    
 variables:
   temperature_scheduled_state: !input temperature_scheduled
   temperature_appreciation_state: !input temperature_appreciation
