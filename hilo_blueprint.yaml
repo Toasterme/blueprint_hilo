@@ -1,4 +1,110 @@
 blueprint:
   name: Blueprint Hilo
   description: Blueprint permettant de configurer la température des thermostats selon le statut du sensor defi hilo. L'intégration HACS Hilo avec Home Assistant est requise pour utiliser ce blueprint.
-  
+  domain: automation
+  input:
+    thermostats_defi:
+      name: Thermostats Défi
+      selector:
+        entity:
+          filter:
+            domain: sensor
+            device_class: temperature
+    temperature_scheduled:
+      name: Température Schédulé
+      description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut scheduled.
+      number:
+        min: 15
+        max: 25
+    temperature_pre_heat:
+      name: Température de Pré Chauffage
+      description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut pre_heat. C'est la température à monter la maison avant le début du défi.
+      number:
+        min: 15
+        max: 25
+    temperature_reduction:
+      name: Température lors du défi
+      description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut reduction. C'est la température à descendre la maison lors du début du défi.
+      number:
+        min: 15
+        max: 25
+    temperature_recovery:
+      name: Température de retour à la normale
+      description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut recovery. C'est la température de retour à la normale après le défi.
+      number:
+        min: 15
+        max: 25
+    temperature_appreciation:
+      name: Température lors des périodes d'ancrage
+      description: Températion à configrer lorsque le sensor.defi_hilo est dans le statut appreciation. C'est la température à à configurer lorsque le système est dans sa période d'ancrage.
+      number:
+        min: 15
+        max: 25
+triggers:
+  - trigger: state
+    entity_id: sensor.defi_hilo
+    to: scheduled
+    id: defi_scheduled
+  - trigger: state
+    entity_id: sensor.defi_hilo
+    to: pre_heat
+    id: defi_pre_heat
+  - trigger: state
+    entity_id: sensor.defi_hilo
+    to: reduction
+    id: defi_reduction
+  - trigger: state
+    entity_id: sensor.defi_hilo
+    to: recovery
+    id: defi_recovery
+  - trigger: state
+    entity_id: sensor.defi_hilo
+    to: appreciation
+    id: defi_appreciation
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: defi_scheduled
+        sequence:
+          - action: climate.set_temperature
+            data:
+              temperature: !input temperature_scheduled
+            target:
+              entity_id: !input thermostats_defi
+      - conditions:
+          - condition: trigger
+            id: defi_pre_heat
+        sequence:
+          - action: climate.set_temperature
+            data:
+              temperature: !input temperature_pre_heat
+            target:
+              entity_id: !input thermostats_defi
+      - conditions:
+          - condition: trigger
+            id: defi_reduction
+        sequence:
+          - action: climate.set_temperature
+            data:
+              temperature: !input temperature_reduction
+            target:
+              entity_id: !input thermostats_defi
+      - conditions:
+          - condition: trigger
+            id: defi_recovery
+        sequence:
+          - action: climate.set_temperature
+            data:
+              temperature: !input temperature_recovery
+            target:
+              entity_id: !input thermostats_defi
+      - conditions:
+          - condition: trigger
+            id: defi_pre_heat
+        sequence:
+          - action: climate.set_temperature
+            data:
+              temperature: !input temperature_pre_heat
+            target:
+              entity_id: !input thermostats_defi
