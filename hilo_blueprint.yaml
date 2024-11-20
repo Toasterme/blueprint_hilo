@@ -120,7 +120,7 @@ actions:
                 - !input thermostats_defi
       - conditions:
           - condition: trigger
-            id: defi_apprication
+            id: defi_appreciation
         sequence:
           - action: climate.set_temperature
             data:
