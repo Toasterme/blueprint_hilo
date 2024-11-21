@@ -83,7 +83,7 @@ actions:
             id: defi_scheduled
         sequence:
           - action: climate.set_temperature
-            data:
+            service_data:
               temperature: "{{ states[temperature_scheduled_state].state | int}}"
             target:
               entity_id: 
@@ -93,7 +93,7 @@ actions:
             id: defi_pre_heat
         sequence:
           - action: climate.set_temperature
-            data:
+            service_data:
               temperature: "{{ states[temperature_pre_heat_state].state | int}}"
             target:
               entity_id: 
@@ -103,7 +103,7 @@ actions:
             id: defi_reduction
         sequence:
           - action: climate.set_temperature
-            data:
+            service_data:
               temperature: "{{ states[temperature_reduction_state].state | int}}"
             target:
               entity_id: 
@@ -113,7 +113,7 @@ actions:
             id: defi_recovery
         sequence:
           - action: climate.set_temperature
-            data:
+            service_data:
               temperature: "{{ states[temperature_recovery_state].state | int}}"
             target:
               entity_id: 
@@ -123,7 +123,7 @@ actions:
             id: defi_appreciation
         sequence:
           - action: climate.set_temperature
-            data:
+            service_data:
               temperature: "{{ states[temperature_appreciation_state].state | int}}"
             target:
               entity_id: 
