@@ -86,7 +86,7 @@ actions:
             data:
               temperature: "{{ states[temperature_scheduled_state].state | int}}"
             target:
-              entity: 
+              entity_id: 
                 - !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -96,7 +96,7 @@ actions:
             data:
               temperature: "{{ states[temperature_pre_heat_state].state | int}}"
             target:
-              entity: 
+              entity_id: 
                 - !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -106,7 +106,7 @@ actions:
             data:
               temperature: "{{ states[temperature_reduction_state].state | int}}"
             target:
-              entity: 
+              entity_id: 
                 - !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -116,7 +116,7 @@ actions:
             data:
               temperature: "{{ states[temperature_recovery_state].state | int}}"
             target:
-              entity: 
+              entity_id: 
                 - !input thermostats_defi
       - conditions:
           - condition: trigger
@@ -126,5 +126,5 @@ actions:
             data:
               temperature: "{{ states[temperature_appreciation_state].state | int}}"
             target:
-              entity: 
+              entity_id: 
                 - !input thermostats_defi
