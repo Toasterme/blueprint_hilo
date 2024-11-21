@@ -84,7 +84,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ states[temperature_scheduled_state].state | int}}"
+              temperature: "{{ temperature_scheduled_state }}"
             target:
               entity_id: 
                 - !input thermostats_defi
@@ -94,7 +94,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ states[temperature_pre_heat_state].state | int}}"
+              temperature: "{{ temperature_pre_heat_state }}"
             target:
               entity_id: 
                 - !input thermostats_defi
@@ -104,7 +104,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ states[temperature_reduction_state].state | int}}"
+              temperature: "{{ temperature_reduction_state }}"
             target:
               entity_id: 
                 - !input thermostats_defi
@@ -114,7 +114,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ states[temperature_recovery_state].state | int}}"
+              temperature: "{{ temperature_recovery_state }}"
             target:
               entity_id: 
                 - !input thermostats_defi
@@ -124,7 +124,7 @@ actions:
         sequence:
           - action: climate.set_temperature
             data:
-              temperature: "{{ states[temperature_appreciation_state].state | int}}"
+              temperature: "{{ temperature_appreciation_state }}"
             target:
               entity_id: 
                 - !input thermostats_defi
