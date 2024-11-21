@@ -86,8 +86,7 @@ actions:
             data:
               temperature: "{{ temperature_scheduled_state }}"
             target:
-              entity_id: 
-                - !input thermostats_defi
+              entity_id: !input thermostats_defi
       - conditions:
           - condition: trigger
             id: defi_pre_heat
@@ -96,8 +95,7 @@ actions:
             data:
               temperature: "{{ temperature_pre_heat_state }}"
             target:
-              entity_id: 
-                - !input thermostats_defi
+              entity_id: !input thermostats_defi
       - conditions:
           - condition: trigger
             id: defi_reduction
@@ -106,8 +104,7 @@ actions:
             data:
               temperature: "{{ temperature_reduction_state }}"
             target:
-              entity_id: 
-                - !input thermostats_defi
+              entity_id: !input thermostats_defi
       - conditions:
           - condition: trigger
             id: defi_recovery
@@ -116,8 +113,7 @@ actions:
             data:
               temperature: "{{ temperature_recovery_state }}"
             target:
-              entity_id: 
-                - !input thermostats_defi
+              entity_id: !input thermostats_defi
       - conditions:
           - condition: trigger
             id: defi_appreciation
@@ -126,5 +122,4 @@ actions:
             data:
               temperature: "{{ temperature_appreciation_state }}"
             target:
-              entity_id: 
-                - !input thermostats_defi
+              entity_id: !input thermostats_defi
