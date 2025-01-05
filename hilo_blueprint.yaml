@@ -9,14 +9,14 @@ blueprint:
         target:
           entity:
             domain: climate
-    temperature_scheduled:
-      name: Température Schédulé
-      description: Température à configrer lorsque le sensor.defi_hilo est dans le statut scheduled.
-      selector:
-        number:
-          min: 15
-          max: 25
-          unit_of_measurement: celcius
+    # temperature_scheduled:
+    #   name: Température Schédulé
+    #   description: Température à configrer lorsque le sensor.defi_hilo est dans le statut scheduled.
+    #   selector:
+    #     number:
+    #       min: 15
+    #       max: 25
+    #       unit_of_measurement: celcius
     temperature_appreciation:
       name: Température lors des périodes d'ancrage
       description: Température à configrer lorsque le sensor.defi_hilo est dans le statut appreciation. C'est la température à à configurer lorsque le système est dans sa période d'ancrage.
@@ -50,7 +50,7 @@ blueprint:
           max: 25
           unit_of_measurement: celcius    
 variables:
-  temperature_scheduled_state: !input temperature_scheduled
+  # temperature_scheduled_state: !input temperature_scheduled
   temperature_appreciation_state: !input temperature_appreciation
   temperature_pre_heat_state: !input temperature_pre_heat
   temperature_reduction_state: !input temperature_reduction
@@ -78,14 +78,14 @@ triggers:
     id: defi_appreciation
 actions:
   - choose:
-      - conditions:
-          - condition: trigger
-            id: defi_scheduled
-        sequence:
-          - action: climate.set_temperature
-            data:
-              temperature: "{{ temperature_scheduled_state }}"
-            target: !input thermostats_defi
+      # - conditions:
+      #     - condition: trigger
+      #       id: defi_scheduled
+      #   sequence:
+      #     - action: climate.set_temperature
+      #       data:
+      #         temperature: "{{ temperature_scheduled_state }}"
+      #       target: !input thermostats_defi
       - conditions:
           - condition: trigger
             id: defi_pre_heat
